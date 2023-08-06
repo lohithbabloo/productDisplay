@@ -1,21 +1,22 @@
 const imageLinks = document.querySelector(".selectionimages");
 
-const displayImage = document.querySelectorAll(".maindisplay>div");
+const displayImage = document.querySelectorAll(".maindisplay > div");
 
 displayImage.forEach((item, id) => {
-  if (id !== displayImage.length - 1) {
-    item.toggleAttribute("hidden", "true");
+  if (id !== 0) {
+    item.style.opacity = 0;
   }
-  0;
 });
 
 imageLinks.addEventListener("click", (e) => {
+  e.preventDefault();
   const selectedImage = e.target.parentNode.getAttribute("href");
   displayImage.forEach((item, id) => {
-    item.toggleAttribute("hidden", "true");
-    const displayImage = "#" + item.getAttribute("id");
-    if (displayImage === selectedImage) {
-      item.removeAttribute("hidden", "true");
+    const displayImageId = "#" + item.getAttribute("id");
+    if (displayImageId === selectedImage) {
+      item.style.opacity = 1;
+    } else {
+      item.style.opacity = 0;
     }
   });
 });
